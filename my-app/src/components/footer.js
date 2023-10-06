@@ -45,9 +45,9 @@ const SampleFooter = () => (
               alt="yuque"
             />
           ),
-          title: 'cse5234',
-          url: 'https://com',
-          description: 'cse5234',
+          title: 'DFARS',
+          url: 'https://www.acquisition.gov/dfars',
+          description: 'Read about DFARS',
           openExternal: true,
         },
         {
@@ -57,9 +57,9 @@ const SampleFooter = () => (
               alt="yuque"
             />
           ),
-          title: 'cse5234',
-          url: 'https://com',
-          description: 'cse5234',
+          title: 'Arms Export Control Act',
+          url: 'https://en.wikipedia.org/wiki/Arms_Export_Control_Act#:~:text=The%20AECA%20requires%20that%20each,to%20an%20escalation%20of%20conflict.',
+          description: 'Read about AECA',
           openExternal: true,
         },
       ],

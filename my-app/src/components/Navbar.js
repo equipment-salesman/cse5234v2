@@ -10,8 +10,8 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
-            CSE5234
+          <NavLink exact to="/" className="nav-logo col-md-6 d-flex justify-content-center m-0">
+            FNAD Enterprises
             <i className="fas fa-code"></i>
           </NavLink>
 
