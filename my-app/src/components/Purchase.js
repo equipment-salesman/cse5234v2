@@ -6,15 +6,16 @@ const Purchase = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // order is the value and setOrder is a function to update the value
-    // const [order, setOrder] = useState({
-    //     buyQuantity: [0,0,0,0,0], credit_card_number: '', expir_date: '', cvvCode: '', 
-    //     card_holder_name: '', address_1: '', address_2: '', city: '', state: '', zip: '',
-    // });
+    //order is the value and setOrder is a function to update the value
+    const [order, setOrder] = useState({
+        buyQuantity: [0,0,0,0,0], credit_card_number: '', expir_date: '', cvvCode: '', 
+        card_holder_name: '', address_1: '', address_2: '', city: '', state: '', zip: '',
+    });
     
-    // const handleSubmit = (e) => {
-    //     navigate('/purchase/paymentEntry', {state: {order: order}})
-    // }
+    const handleSubmit = (e) => {
+        order.buyQuantity[e.currentTarget.value] += 1;
+        navigate('/purchase/paymentEntry', {state: {order: order}})
+    }
 
     return (
         <div className="container overflow-auto">
@@ -22,13 +23,14 @@ const Purchase = () => {
                 <div className="row d-flex justify-content-center gap-2">
                     <div className="col-sm-5 d-flex border p-3">
                         <img className="col-sm-6" src={require("../images/leopard.JPG")} alt="Leopard 2 Tank"></img>
-                        <div className="p-3 align-items-center">
+                        <div className="p-3 align-items-center w-100">
                             <h4>
                                 Leopard 2 Tank
                             </h4>
                             <p>
                                 Cool Tank. Big Tank.
                             </p>
+                            <button type="button" value={0} className="btn btn-primary mt-4" onClick={handleSubmit}>Purchase</button>
                         </div>
                     </div>
                 </div>
@@ -36,13 +38,14 @@ const Purchase = () => {
                 <div className="row d-flex justify-content-center gap-2">
                     <div className="col-sm-5 d-flex border p-3">
                         <img className="col-sm-6" src={require("../images/blackbird.jpg")} alt="Blackbird"></img>
-                        <div className="p-3 align-items-center">
+                        <div className="p-3 align-items-center w-100">
                             <h4>
                                 Lockheed SR-71 Blackbird
                             </h4>
                             <p>
                                 Fastest plane
                             </p>
+                            <button type="button" value={1} className="btn btn-primary mt-4" onClick={handleSubmit}>Purchase</button>
                         </div>
                     </div>
                 </div>
@@ -50,13 +53,14 @@ const Purchase = () => {
                 <div className="row d-flex justify-content-center gap-2">
                     <div className="col-sm-5 d-flex border p-3">
                         <img className="col-sm-6" src={require("../images/soltamk6.jpg")} alt="Soltam K6"></img>
-                        <div className="p-3 align-items-center">
+                        <div className="p-3 align-items-center w-100">
                             <h4>
                                 Soltam K6 Mortar
                             </h4>
                             <p>
                                 Mortar with great range and fire rate.
                             </p>
+                            <button type="button" value={2} className="btn btn-primary mt-4" onClick={handleSubmit}>Purchase</button>
                         </div>
                     </div>
                 </div>
