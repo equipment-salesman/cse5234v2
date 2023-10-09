@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import "./about.css"
 import MarkPic from '../images/Mark Picture.jpg'
+import MaxPic from '../images/Max Picture.JPG'
 
 const employees = [
   {
@@ -11,10 +12,10 @@ const employees = [
     about: 'Mark is a senior majoring in Computer Science and Engineering at The Ohio State University. Mark was born and raised in Bedford, Ohio.',
   },
   {
-    name: 'Employee 2',
-    position: 'Position 2',
-    photo: MarkPic,
-    about: 'About Employee 2...',
+    name: 'Max Daley',
+    position: 'CEO',
+    photo: MaxPic,
+    about: 'Max is a senior majoring in CIS at The Ohio State University. Born and raised in Columbus Ohio, he is passionate about software engineering and rock climbing',
   },
   {
     name: 'Employee 3',
@@ -31,8 +32,22 @@ const About= () => {
       <Row>
         {employees.map((employee, index) => (
           <Col key={index} md={4}>
-            <Card  className="mb-3">
-              <Card.Img class = "img-responsive" variant="top" src={(employee.photo)}/>
+            <Card  className="mb-3 h-100">
+              <Card.Img className="img h-75" variant="top" src={(employee.photo)}/>
+              <Card.Body>
+                <Card.Title className="employee-name">{employee.name}</Card.Title>
+                <Card.Subtitle className="position">{employee.position}</Card.Subtitle>
+                <Card.Text className="about-text">{employee.about}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+      <Row>
+        {employees.map((employee, index) => (
+          <Col key={index} md={4}>
+            <Card  className="mb-3 h-100">
+              <Card.Img className="img h-75" variant="top" src={(employee.photo)}/>
               <Card.Body>
                 <Card.Title className="employee-name">{employee.name}</Card.Title>
                 <Card.Subtitle className="position">{employee.position}</Card.Subtitle>
