@@ -9,20 +9,22 @@ const Confirmation = () => {
 
     
         return (
-        <div>
-            <h1>{title}</h1>
-            <h2>
-                Your order:
-                <br />
-                Product 1: {location.state.order.buyQuantity[0]}
-                <br />
-                Product 2: {location.state.order.buyQuantity[1]}
-                <br />
-                Thank you for your business!
-                <br />
-                Confirmation Number: 9935
-            </h2>
-        </div>
+            <div>
+                <div className="card">
+                <div className="card-header">
+                    <h1>{title}</h1>
+                </div>
+                <div className="card-body">
+                    <h3>Your Order Summary:</h3>
+                    <ul>
+                    <li>Product 1: {location.state?.order?.buyQuantity[0]}</li>
+                    <li>Product 2: {location.state?.order?.buyQuantity[1]}</li>
+                    </ul>
+                    <p>Thank you for your business!</p>
+                    <p>Confirmation Number: 9935</p>
+                </div>
+                </div>
+          </div>
     );
 };
 

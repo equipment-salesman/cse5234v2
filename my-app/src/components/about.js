@@ -3,6 +3,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import "./about.css"
 import MarkPic from '../images/Mark Picture.jpg'
 import MaxPic from '../images/Max Picture.JPG'
+import AustinPic from '../images/austinPic.jpeg'
 
 const employees = [
   {
@@ -18,10 +19,10 @@ const employees = [
     about: 'Max is a senior majoring in CIS at The Ohio State University. Born and raised in Columbus Ohio, he is passionate about software engineering and rock climbing',
   },
   {
-    name: 'Employee 3',
-    position: 'Position 3',
-    photo: MarkPic,
-    about: 'About Employee 3...',
+    name: 'Austin Carrick',
+    position: 'CTO',
+    photo: AustinPic,
+    about: 'Austin is a senior majoring in Computer Science and Engineering at The Ohio State University. Born and raised in Leroy, New York.',
   }
 ];
 

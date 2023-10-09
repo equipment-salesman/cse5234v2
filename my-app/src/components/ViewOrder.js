@@ -13,35 +13,48 @@ const ViewOrder = () => {
 
     return (
         <div>
-        <h3>
-            Your order:
-            <br />
-            Product 1: {location.state.order.buyQuantity[0]}
-            <br />
-            Product 2: {location.state.order.buyQuantity[1]}
-            <br />
-            Credit card number: {location.state.order.credit_card_number}
-            <br />
-            Address 1: {location.state.order.address_1}
-            <br />
-            Address 2: {location.state.order.address_2}
-            <br />
-            City: {location.state.order.city}
-            <br />
-            State: {location.state.order.state}
-            <br />
-            Zipcode: {location.state.order.zip}
+            <div class="card">
+                <div class="card-header">
+                <h3>Your Order Summary</h3>
+                </div>
+                <div class="card-body">
+                <h4>Products:</h4>
+                <ul>
+                    <li>Product 1: {location.state.order.buyQuantity[0]}</li>
+                    <li>Product 2: {location.state.order.buyQuantity[1]}</li>
+                </ul>
 
-            <form onSubmit={submitForm}>
-            <label htmlFor="Look Good?">Look Good?:</label>
-                    <input type="checkbox"
-                     required>
-                    </input> 
-                <button type="submit">Next</button>
+                <h4>Payment Information:</h4>
+                <p>Credit Card Number: {location.state.order.credit_card_number}</p>
 
-            </form>
-        </h3>
-    </div>
+                <h4>Shipping Address:</h4>
+                <p>Address 1: {location.state.order.address_1}</p>
+                <p>Address 2: {location.state.order.address_2}</p>
+                <p>City: {location.state.order.city}</p>
+                <p>State: {location.state.order.state}</p>
+                <p>Zipcode: {location.state.order.zip}</p>
+                </div>
+                <div class="card-footer">
+                <form onSubmit={submitForm}>
+                    <div class="form-check">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="confirmationCheckbox"
+                        required
+                    />
+                    <label class="form-check-label" for="confirmationCheckbox">
+                        Everything looks good?
+                    </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                    Confirm Order
+                    </button>
+                </form>
+                </div>
+            </div>
+        </div>
+
     );
 };
 

@@ -38,36 +38,95 @@ const ShippingEntry = () => {
 
     return (
         <div>
-            <h3>
-                Enter your shipping information:
+            <div className="card">
+                <div className="card-header">
+                    <h3>Enter your payment information:</h3>
+                </div>
+                <div className="card-body">
+                    <h4>
+                        Your order:
+                        <br />
+                        Product 1: {location.state.order.buyQuantity[0]} Product 2: {location.state.order.buyQuantity[1]}
+                    </h4>
 
-            </h3>
-            <h4>
-                Your order:
-                <br />
-                Product 1: {location.state.order.buyQuantity[0]} Product 2: {location.state.order.buyQuantity[1]}
-                <br />
-            </h4>
+            <form onSubmit={submitForm}>
+                {/* Address line 1 */}
+                <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Address line 1"
+                    aria-label="Address line 1"
+                    aria-describedby="basic-addon1"
+                    name="address1"
+                    onChange={handleInputChange}
+                    required
+                />
+                </div>
 
-            <div>
-                <form onSubmit={submitForm}>
-                    <label htmlFor="address1">Address line 1: </label>
-                    <input type='text' id="address1" name="address1" onChange={handleInputChange} required /> <br />
+                {/* Address line 2 */}
+                <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Address line 2"
+                    aria-label="Address line 2"
+                    aria-describedby="basic-addon1"
+                    name="address2"
+                    onChange={handleInputChange}
+                />
+                </div>
 
-                    <label htmlFor="address2">Address line 2: </label>
-                    <input type='text' id="address2" name="address2" onChange={handleInputChange} /> <br />
+                {/* City */}
+                <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="City"
+                    aria-label="City"
+                    aria-describedby="basic-addon1"
+                    name="city"
+                    onChange={handleInputChange}
+                    required
+                />
+                </div>
 
-                    <label htmlFor="city">City: </label>
-                    <input type="text" id="city" name="city" onChange={handleInputChange} required /><br />
+                {/* State */}
+                <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="State"
+                    aria-label="State"
+                    aria-describedby="basic-addon1"
+                    name="state"
+                    onChange={handleInputChange}
+                    required
+                />
+                </div>
 
-                    <label htmlFor="state">State: </label>
-                    <input type="text" id="state" name="state" onChange={handleInputChange} required /><br />
+                {/* Zipcode */}
+                <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Zipcode"
+                    aria-label="Zipcode"
+                    aria-describedby="basic-addon1"
+                    name="zip"
+                    onChange={handleInputChange}
+                    required
+                />
+                </div>
 
-                    <label htmlFor="zip">Zipcode: </label>
-                    <input type="text" id="zip" name="zip" onChange={handleInputChange} required /><br />
-
-                    <button type="submit">Next</button>
-                </form>
+                <button type="submit">Next</button>
+            </form>
+            </div>
             </div>
         </div>
     );
