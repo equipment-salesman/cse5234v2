@@ -11,7 +11,7 @@ import ViewOrder from './components/ViewOrder';
 import SampleFooter from "./components/footer";
 import Home from './components/home';
 import About from './components/about';
-import Cart from './components/cart';
+import Cart from './components/contactus';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
       <Routes>
       <Route path='/home' element={<Home/>} />
       <Route path='/about' element={<About/>} />
-      <Route path='/cart' element={<Cart/>} />
+      <Route path='/contactus' element={<Cart/>} />
 
       <Route path='/purchase' element={<Purchase/>} />
       <Route path="/" element={<Navigate replace to="/home" />} />

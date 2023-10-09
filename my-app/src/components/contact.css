@@ -1,0 +1,28 @@
+.img-about {
+    max-width: 100%;
+    height: 8rem;
+    display: block;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: auto;
+}
+
+.img-contact {
+    height: 100%;
+    width: 8rem !important; 
+    margin-top: 1.5rem;
+}
+
+.img-phone {
+    height: 100%;
+    width: 50% !important;
+    margin-top: 1.3rem;
+}
+
+.img-email {
+    height: 70%;
+    width: 60% !important;
+    margin-top: 1.5rem;
+}
