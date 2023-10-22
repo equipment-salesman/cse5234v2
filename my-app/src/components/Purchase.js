@@ -7,6 +7,7 @@ const Purchase = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [products, setProducts] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     //order is the value and setOrder is a function to update the value
     const [order, setOrder] = useState({
@@ -30,12 +31,17 @@ const Purchase = () => {
         navigate('/purchase/paymentEntry', {state: {order: order}})
     }
     
-    
+    const searchProduct = (e) => {
+        var search = e.currentTarget.value;
+        
+    }
+
     return (
         <div className="container overflow-auto">
-            <div className="my-3"><input type="text" placeholder="Search" className="w-40"></input></div>
+            <div className="my-3"><input type="text" value={searchTerm} placeholder="Search" className="w-40" onChange={(e) => setSearchTerm(e.target.value)}></input></div>
             <div className="container mt-2">
-                {products && Object.keys(products).map((itemId) => (
+                {products && Object.keys(products).filter(itemId => products[itemId].title.toLowerCase().includes(searchTerm.toLowerCase()))
+                .map((itemId) => (
                     <div className="row d-flex justify-content-center gap-2">
                         {console.log("value: " + products[itemId])}
                         <div className="col-sm-5 d-flex border p-3">
