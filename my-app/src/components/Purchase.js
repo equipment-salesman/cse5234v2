@@ -8,7 +8,8 @@ const Purchase = () => {
     const navigate = useNavigate();
     const [products, setProducts] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
-
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 3;
     //order is the value and setOrder is a function to update the value
     const [order, setOrder] = useState({
         buyQuantity: [0,0,0,0,0], credit_card_number: '', expir_date: '', cvvCode: '', 
@@ -16,23 +17,23 @@ const Purchase = () => {
     });
 
     useEffect(() => {
-        axios.get('https://3tcakfimxi.execute-api.us-east-2.amazonaws.com/prod/retrieve')
-            .then(response => {    
-                //setProducts(Object.entries(response.data.items));
+        axios.get(`https://3tcakfimxi.execute-api.us-east-2.amazonaws.com/prod/retrieve${searchTerm ? "?search=" + searchTerm : ''}`)
+            .then(response => {
+                console.log("response: " + response.data)
                 setProducts(response.data.items)
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [page, products]);
 
     const handleSubmit = (e) => {
         order.buyQuantity[e.currentTarget.value] += 1;
         navigate('/purchase/paymentEntry', {state: {order: order}})
     }
-    
-    const searchProduct = (e) => {
-        var search = e.currentTarget.value;
+
+    const paginate = (newPage) => {
+        setPage(newPage);
         
     }
 
@@ -40,7 +41,7 @@ const Purchase = () => {
         <div className="container overflow-auto">
             <div className="my-3"><input type="text" value={searchTerm} placeholder="Search" className="w-40" onChange={(e) => setSearchTerm(e.target.value)}></input></div>
             <div className="container mt-2">
-                {products && Object.keys(products).filter(itemId => products[itemId].title.toLowerCase().includes(searchTerm.toLowerCase()))
+                {products && Object.keys(products)
                 .map((itemId) => (
                     <div className="row d-flex justify-content-center gap-2">
                         {console.log("value: " + products[itemId])}
@@ -49,7 +50,6 @@ const Purchase = () => {
                             <div className="p-3 align-items-center w-100">
                                 <h4>
                                     {products[itemId].title}
-                                    {console.log(typeof(products[itemId].image))}
                                 </h4>
                                 <p>
                                     {products[itemId].description}
@@ -59,24 +59,20 @@ const Purchase = () => {
                         </div>
                     </div>
                 ))}
-               
+                
             </div>
             
             <ul className="pagination col-2-6 d-flex justify-content-center pt-3">
-                <li className="page-item disabled">
-                    <a className="page-link" href="#" tabindex="-1">Previous</a>
+                <li className={`page-item ${page === 1 ? 'disabled' : ''}`}>
+                    <a className="page-link" onClick={() => paginate(page - 1)} tabindex="-1">Previous</a>
                 </li>
-                <li className="page-item active">
-                    <a className="page-link" href="#">1</a>
+                {/* {Array.from(Array(Math.ceil(Object.keys(products).length / itemsPerPage)).keys()).map((_, index) => ( */}
+                <li key={1} className='page-item active'>
+                    <a className="page-link" >1</a>
                 </li>
-                <li className="page-item disabled">
-                    <a className="page-link" href="#">2 </a>
-                </li>
-                <li className="page-item disabled">
-                    <a className="page-link" href="#">3</a>
-                </li>
-                <li className="page-item disabled">
-                    <a className="page-link" href="#">Next</a>
+                {/* ))} */}
+                <li className='page-item disabled'>
+                    <a className="page-link">Next</a>
                 </li>
             </ul>
             
