@@ -12,7 +12,10 @@ const Purchase = () => {
     const itemsPerPage = 3;
     //order is the value and setOrder is a function to update the value
     const [order, setOrder] = useState({
-        buyQuantity: [0,0,0,0,0], credit_card_number: '', expir_date: '', cvvCode: '', 
+        buyQuantity: {"item": {
+            quantity: 1,
+            title: ""
+        }}, credit_card_number: '', expir_date: '', cvvCode: '', 
         card_holder_name: '', address_1: '', address_2: '', city: '', state: '', zip: '',
     });
 
@@ -54,7 +57,7 @@ const Purchase = () => {
                                 <p>
                                     {products[itemId].description}
                                 </p>
-                                <button type="button" value={0} className="btn btn-primary mt-4" onClick={handleSubmit}>Purchase</button>
+                                <button type="button" value={products[itemId].title} className="btn btn-primary mt-4" onClick={handleSubmit}>Purchase</button>
                             </div>
                         </div>
                     </div>
