@@ -13,9 +13,9 @@ const ViewOrder = () => {
 
     const submitForm = async (e) => {
         e.preventDefault(); // prevent the default form submission behavior
-    
+        console.log(JSON.stringify(location.state.order))
         try {
-            const response = await fetch('https://q8yvxi27lc.execute-api.us-east-2.amazonaws.com/prod', {
+            const response = await fetch('https://i8i1po0091.execute-api.us-east-2.amazonaws.com/order-post-v2', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
