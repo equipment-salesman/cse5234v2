@@ -22,13 +22,12 @@ const Purchase = () => {
     useEffect(() => {
         axios.get(`https://3tcakfimxi.execute-api.us-east-2.amazonaws.com/prod/retrieve${searchTerm ? "?search=" + searchTerm : ''}`)
             .then(response => {
-                console.log("response: " + response.data)
                 setProducts(response.data.items)
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    }, [page, products]);
+    }, [searchTerm]);
 
     const handleSubmit = (e) => {
         order.buyQuantity[e.currentTarget.value] += 1;
@@ -47,7 +46,6 @@ const Purchase = () => {
                 {products && Object.keys(products)
                 .map((itemId) => (
                     <div className="row d-flex justify-content-center gap-2">
-                        {console.log("value: " + products[itemId])}
                         <div className="col-sm-5 d-flex border p-3">
                             <img className="col-sm-6" src={require(`../images/${products[itemId].image}`)} alt="Leopard 2 Tank"></img>
                             <div className="p-3 align-items-center w-100">
