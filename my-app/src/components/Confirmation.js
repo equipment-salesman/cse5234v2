@@ -17,8 +17,7 @@ const Confirmation = () => {
                 <div className="card-body">
                     <h3>Your Order Summary:</h3>
                     <ul>
-                    <li>Product 1: {location.state?.order?.buyQuantity[0]}</li>
-                    <li>Product 2: {location.state?.order?.buyQuantity[1]}</li>
+                    <li>Product 1: {location.state?.order?.itemName}</li>
                     </ul>
                     <p>Thank you for your business!</p>
                     <p>Confirmation Number: 9935</p>

@@ -48,8 +48,7 @@ const ViewOrder = () => {
                 <div class="card-body">
                 <h4>Products:</h4>
                 <ul>
-                    <li>Product 1: {location.state.order.buyQuantity[0]}</li>
-                    <li>Product 2: {location.state.order.buyQuantity[1]}</li>
+                    <li>Product 1: {location.state.order.itemName}</li>
                 </ul>
 
                 <h4>Payment Information:</h4>

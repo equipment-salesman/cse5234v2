@@ -44,7 +44,7 @@ const PaymentEntry = () => {
           <h4>
             Your order:
             <br />
-            Product 1: {location.state.order.buyQuantity[0]} Product 2: {location.state.order.buyQuantity[1]}
+            Product 1: {location.state.order.itemName} 
           </h4>
 
           <form onSubmit={submitForm}>

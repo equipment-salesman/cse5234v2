@@ -12,10 +12,7 @@ const Purchase = () => {
     const itemsPerPage = 3;
     //order is the value and setOrder is a function to update the value
     const [order, setOrder] = useState({
-        buyQuantity: {"item": {
-            quantity: 1,
-            title: ""
-        }}, credit_card_number: '', expir_date: '', cvvCode: '', 
+        itemName: '', credit_card_number: '', expir_date: '', cvvCode: '', 
         card_holder_name: '', address_1: '', address_2: '', city: '', state: '', zip: '',
     });
 
@@ -27,10 +24,12 @@ const Purchase = () => {
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    }, [searchTerm]);
+
+    }, [searchTerm]); 
+
 
     const handleSubmit = (e) => {
-        order.buyQuantity[e.currentTarget.value] += 1;
+        order.itemName = e.currentTarget.value;
         navigate('/purchase/paymentEntry', {state: {order: order}})
     }
 
