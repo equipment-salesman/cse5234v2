@@ -7,9 +7,37 @@ const ViewOrder = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const submitForm = (e) => {
-        navigate('/purchase/Confirmation', {state: {order: location.state.order}});
+    // const submitForm = (e) => {
+    //     navigate('/purchase/Confirmation', {state: {order: location.state.order}});
+    // }
+
+    const submitForm = async (e) => {
+        e.preventDefault(); // prevent the default form submission behavior
+        console.log(JSON.stringify(location.state.order))
+        try {
+            const response = await fetch('https://i8i1po0091.execute-api.us-east-2.amazonaws.com/order-post-v2', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(location.state.order) // sending the order as JSON
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const responseData = await response.json();
+            console.log("API Response:", responseData); // log the API response
+    
+            // Navigate only after a successful fetch call
+            navigate('/purchase/Confirmation', {state: {order: location.state.order}});
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error.message);
+        }
     }
+    
+
 
     return (
         <div>
