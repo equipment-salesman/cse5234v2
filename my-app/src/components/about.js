@@ -30,7 +30,7 @@ const About= () => {
   return (
     <Container>
       <h1>About Our Team</h1>
-      <Row>
+      <Row className="mb-3">
         {employees.map((employee, index) => (
           <Col key={index} md={4}>
             <Card  className="mb-3 h-100">
@@ -44,20 +44,7 @@ const About= () => {
           </Col>
         ))}
       </Row>
-      <Row>
-        {employees.map((employee, index) => (
-          <Col key={index} md={4}>
-            <Card  className="mb-3 h-100">
-              <Card.Img className="img h-75" variant="top" src={(employee.photo)}/>
-              <Card.Body>
-                <Card.Title className="employee-name">{employee.name}</Card.Title>
-                <Card.Subtitle className="position">{employee.position}</Card.Subtitle>
-                <Card.Text className="about-text">{employee.about}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      
     </Container>
   );
 };

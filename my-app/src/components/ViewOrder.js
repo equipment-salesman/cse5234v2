@@ -24,11 +24,12 @@ const ViewOrder = () => {
             });
     
             if (!response.ok) {
+                console.log(response.status);
                 throw new Error('Network response was not ok');
             }
     
             const responseData = await response.json();
-            console.log("API Response:", responseData); // log the API response
+            //console.log("API Response:", responseData); // log the API response
     
             // Navigate only after a successful fetch call
             navigate('/purchase/Confirmation', {state: {order: location.state.order}});
@@ -48,7 +49,8 @@ const ViewOrder = () => {
                 <div class="card-body">
                 <h4>Products:</h4>
                 <ul>
-                    <li>Product 1: {location.state.order.itemName}</li>
+                    <li>{location.state.order.itemName}</li>
+                    <li>Quantity: {location.state.order.quantity}</li>
                 </ul>
 
                 <h4>Payment Information:</h4>
@@ -63,16 +65,16 @@ const ViewOrder = () => {
                 </div>
                 <div class="card-footer">
                 <form onSubmit={submitForm}>
-                    <div class="form-check">
-                    <input
-                        type="checkbox"
-                        class="form-check-input"
-                        id="confirmationCheckbox"
-                        required
-                    />
-                    <label class="form-check-label" for="confirmationCheckbox">
-                        Everything looks good?
-                    </label>
+                    <div className="form-check d-flex justify-content-center">
+                        <label className="form-check-label mx-1" for="confirmationCheckbox">
+                            Everything looks good?
+                        </label>
+                        <input
+                            type="checkbox"
+                            className="form-check-input mx-1"
+                            id="confirmationCheckbox"
+                            required
+                        />
                     </div>
                     <button type="submit" class="btn btn-primary">
                     Confirm Order

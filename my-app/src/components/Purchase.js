@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import "./purchase.css";
 
 const Purchase = () => {
 
@@ -9,10 +10,11 @@ const Purchase = () => {
     const [products, setProducts] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
+    const [quantities, setQuantities] = useState({});
     const itemsPerPage = 3;
     //order is the value and setOrder is a function to update the value
     const [order, setOrder] = useState({
-        itemName: '', credit_card_number: '', expir_date: '', cvvCode: '', 
+        itemName: '', quantity: 0, credit_card_number: '', expir_date: '', cvvCode: '', 
         card_holder_name: '', address_1: '', address_2: '', city: '', state: '', zip: '',
     });
 
@@ -28,8 +30,9 @@ const Purchase = () => {
     }, [searchTerm]); 
 
 
-    const handleSubmit = (e) => {
-        order.itemName = e.currentTarget.value;
+    const handleSubmit = (quantity, product) => {
+        order.itemName = product;
+        order.quantity = quantity;
         navigate('/purchase/paymentEntry', {state: {order: order}})
     }
 
@@ -37,6 +40,13 @@ const Purchase = () => {
         setPage(newPage);
         
     }
+
+    const handleQuantityChange = (productId, newQuantity) => {
+        setQuantities((prevQuantities) => ({
+          ...prevQuantities,
+          [productId]: newQuantity,
+        }));
+      };    
 
     return (
         <div className="container overflow-auto">
@@ -54,7 +64,12 @@ const Purchase = () => {
                                 <p>
                                     {products[itemId].description}
                                 </p>
-                                <button type="button" value={products[itemId].title} className="btn btn-primary mt-4" onClick={handleSubmit}>Purchase</button>
+                                <div className="d-flex justify-content-center mt-4">
+                                    <button type="button" value={products[itemId].title} className="btn btn-primary h-auto" onClick={(e) => handleSubmit(quantities[products[itemId].id], e.target.value)}>Purchase</button>
+                                    <label for="quantity"></label>
+                                    <input type="number" id={"quantity" + products[itemId]} name="quantity" value={quantities[products[itemId].id] || 1} min="1" onChange={(e) => handleQuantityChange(products[itemId].id, e.target.value)} className="quantity mx-1 h-auto"/>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

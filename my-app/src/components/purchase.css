@@ -43,3 +43,7 @@
     text-align: left;
     cursor: pointer;
   }
+
+  .quantity {
+    width: 40px;
+  }

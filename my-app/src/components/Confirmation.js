@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 
 const Confirmation = () => {
     
-    let title = "confirmation page";
+    let title = "Confirmation";
     
     const location = useLocation();
 
@@ -17,7 +17,8 @@ const Confirmation = () => {
                 <div className="card-body">
                     <h3>Your Order Summary:</h3>
                     <ul>
-                    <li>Product 1: {location.state?.order?.itemName}</li>
+                        <li>{location.state?.order?.itemName}</li>
+                        <li>Quantity: {location.state.order.quantity}</li>
                     </ul>
                     <p>Thank you for your business!</p>
                     <p>Confirmation Number: 9935</p>
